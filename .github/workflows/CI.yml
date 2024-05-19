@@ -44,5 +44,5 @@ jobs:
 
       - run: |
           conda --version
-          conda env create -c conda-forge -c nodefaults fpm --prefix env
+          conda create -c conda-forge -c nodefaults fpm flang --prefix env
           conda activate env
