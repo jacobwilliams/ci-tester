@@ -1,0 +1,17 @@
+name = "ci-tester"
+author = "Jacob Williams"
+copyright  = "Copyright (c) 2024, Jacob Williams"
+license = "BSD-3"
+description = "testing GitHub Actions CI + Fortran"
+homepage = "https://github.com/jacobwilliams/ci-tester"
+
+[build]
+auto-executables = true
+auto-examples = true
+auto-tests = true
+
+[library]
+source-dir = "src"
+
+[install]
+library = false
