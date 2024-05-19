@@ -36,7 +36,7 @@ jobs:
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v3.0.4
         with:
-          auto-update-conda: true
+          #auto-update-conda: true
           python-version: ${{ matrix.python-version }}
 
       # - name: Setup Fortran Package Manager
@@ -54,4 +54,4 @@ jobs:
       - run: conda list
       - run: conda config --show
       - run: conda create -c conda-forge -c nodefaults fpm flang --prefix ./env
-      - run: conda activate env
+      - run: conda activate ./env
