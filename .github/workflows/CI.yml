@@ -6,22 +6,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        # os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest]
+        python-version: [3.11]
         toolchain:
           - {compiler: gcc, version: 13}
-          - {compiler: intel, version: '2023.2'}
-          - {compiler: intel-classic, version: '2021.10'}
-          - {compiler: nvidia-hpc, version: '23.11'}
+          # - {compiler: intel, version: '2023.2'}
+          # - {compiler: intel-classic, version: '2021.10'}
+          # - {compiler: nvidia-hpc, version: '23.11'}
         include:
           - os: ubuntu-latest
-            toolchain: {compiler: gcc, version: 12}
-        exclude:
-          - os: macos-latest
-            toolchain: {compiler: intel, version: '2023.2'}
-          - os: macos-latest
-            toolchain: {compiler: nvidia-hpc, version: '23.11'}
-          - os: windows-latest
-            toolchain: {compiler: nvidia-hpc, version: '23.11'}
+            toolchain: {compiler: gcc, version: 13}
+        # exclude:
+        #   - os: macos-latest
+        #     toolchain: {compiler: intel, version: '2023.2'}
+        #   - os: macos-latest
+        #     toolchain: {compiler: nvidia-hpc, version: '23.11'}
+        #   - os: windows-latest
+        #     toolchain: {compiler: nvidia-hpc, version: '23.11'}
+    defaults:
+      run:
+        shell: bash -el {0}
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.6
@@ -30,6 +35,9 @@ jobs:
 
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v3.0.4
+        with:
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
 
       # - name: Setup Fortran Package Manager
       #   uses: fortran-lang/setup-fpm@v5
@@ -42,7 +50,8 @@ jobs:
       #     compiler: ${{ matrix.toolchain.compiler }}
       #     version: ${{ matrix.toolchain.version }}
 
-      - run: |
-          conda --version
-          conda create -c conda-forge -c nodefaults fpm flang --prefix env
-          conda activate env
+      - run: conda info
+      - run: conda list
+      - run: conda config --show
+      - run: conda create -c conda-forge -c nodefaults fpm flang --prefix env
+      - run: conda activate env
