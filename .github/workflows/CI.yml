@@ -53,6 +53,4 @@ jobs:
       - run: conda info
       - run: conda list
       - run: conda config --show
-      - run: conda create -c conda-forge -c nodefaults fpm flang --prefix ./env
-      - run: conda activate ./env
-      - run: fpm run --compiler flang
+      - run: conda create -c conda-forge -c nodefaults fpm flang --prefix ./env; conda activate ./env; fpm run --compiler flang
