@@ -24,6 +24,11 @@ jobs:
             toolchain: {compiler: nvidia-hpc, version: '23.11'}
     steps:
 
+      - name: Checkout
+        uses: actions/checkout@v4.1.6
+        with:
+          submodules: recursive
+
       - name: Setup Fortran Package Manager
         uses: fortran-lang/setup-fpm@v5
         with:
