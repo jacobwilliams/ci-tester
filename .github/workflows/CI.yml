@@ -23,8 +23,9 @@ jobs:
         uses: fortran-lang/setup-fpm@v5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-      - run: fpm run --compiler flang-new
+      # - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)
+      # - run: fpm run --compiler flang-new
+      - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh); which flang-new; fpm run --compiler flang-new"
 
   test:
     runs-on: ${{ matrix.os }}
