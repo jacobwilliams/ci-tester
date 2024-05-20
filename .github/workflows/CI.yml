@@ -27,6 +27,7 @@ jobs:
       # - run: fpm run --compiler flang-new
       # - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh); which flang-new; fpm run --compiler flang-new"
 
+      - run: wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
       # LLVM
       - run: sudo apt-get install libllvm-19-ocaml-dev libllvm19 llvm-19 llvm-19-dev llvm-19-doc llvm-19-examples llvm-19-runtime
       # Clang and co
