@@ -19,11 +19,11 @@ jobs:
         uses: actions/checkout@v4.1.6
         with:
           submodules: recursive
-      - name: Setup Fortran Package Manager
-        uses: fortran-lang/setup-fpm@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)
+      # - name: Setup Fortran Package Manager
+      #   uses: fortran-lang/setup-fpm@v5
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      # - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)
       # - run: fpm run --compiler flang-new
       # - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh); which flang-new; fpm run --compiler flang-new"
 
@@ -60,8 +60,8 @@ jobs:
       # LLVM libc
       - run: sudo apt-get install libllvmlibc-19-dev
 
-      -run: which flang-new
-      -run: flang-new --version
+      - run: which flang-new
+      - run: flang-new --version
 
   test:
     runs-on: ${{ matrix.os }}
