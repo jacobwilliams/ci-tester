@@ -25,7 +25,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       # - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)
       # - run: fpm run --compiler flang-new
-      - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh); which flang-new; fpm run --compiler flang-new"
+      # - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh); which flang-new; fpm run --compiler flang-new"
+      - run: brew install carlocab/personal/flang
+      - run: which flang-new
+      - run: flang-new --version
 
   test:
     runs-on: ${{ matrix.os }}
