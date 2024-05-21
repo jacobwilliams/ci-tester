@@ -70,6 +70,9 @@ jobs:
       - run: which clang
       - run: clang --version
 
+      - run: which flang
+      - run: flang --version
+
       - run: which flang-new
       - run: flang-new --version
 
