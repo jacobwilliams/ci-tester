@@ -61,8 +61,8 @@ jobs:
       # # LLVM libc
       # - run: sudo apt-get install libllvmlibc-19-dev
 
-      - run: wget https://apt.llvm.org/llvm.sh
-      - run: echo "apt-get install -y flang-$LLVM_VERSION" >> ./llvm.sh
+      # - run: wget https://apt.llvm.org/llvm.sh
+      # - run: echo "apt-get install -y flang-$LLVM_VERSION" >> ./llvm.sh
 
       - run: chmod +x ./llvm.sh
       - run: sudo ./llvm.sh all
